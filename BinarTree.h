@@ -342,22 +342,6 @@ private:
 
         printTree(root->left, trunk, false);
     }
-
-//    void showRecursive(Node<T>* node, const string& prefix, bool isLeft) const {
-//        if (node == nullptr) {
-//            return;
-//        }
-//
-//        cout << prefix;
-//
-//        cout << (isLeft ? "├── " : "└── ");
-//
-//        cout << node->data << endl;
-//
-//        showRecursive(node->left, prefix + (isLeft ? "│   " : "    "), true);
-//        showRecursive(node->right, prefix + (isLeft ? "│   " : "    "), false);
-//    }
-//
     void clearRecursive(Node<T>* node) {
         if (node == nullptr) {
             return;

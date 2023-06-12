@@ -170,6 +170,7 @@ int main() {
                         break;
                     case 0:
                         cout << "Exiting..." << endl;
+                        tree.clear();
                         break;
                     default:
                         cout << "Invalid choice. Please try again." << endl;
