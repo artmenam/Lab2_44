@@ -169,7 +169,7 @@ void menu() {
                     }
                     case 16: {
                         string path;
-                        cout << "Enter path to node: ";
+                        cout << "Enter path to node(L,R, / - between actions): ";
                         cin.ignore();
                         getline(cin, path);
                         Node<T>* node = tree.findNodeByPath(path);
