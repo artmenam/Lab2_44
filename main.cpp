@@ -15,7 +15,7 @@ void showMenu () {
     cout << "8. Map tree elements(multiply by 2)" << endl;
     cout << "9. Filter tree elements(x % 2 == 0)" << endl;
     cout << "10. Merge two trees" << endl;
-    cout << "11. Extract subtree" << endl;
+    cout << "11. Contain subtree" << endl;
     cout << "12. Check if tree contains subtree" << endl;
     cout << "13. Check if tree contains element" << endl;
     cout << "14. Convert tree to string" << endl;
