@@ -40,9 +40,10 @@ bool isEven(T value) {
     return value % 2 == 0;
 }
 
-int main() {
+template<class T>
+void menu() {
     int choice;
-    BinaryTree<int> tree;
+    BinaryTree<T> tree;
 
     cout << "Menu:" << endl;
     cout << "1. AutoTest" << endl;
@@ -90,20 +91,20 @@ int main() {
                         tree.PKL();
                         break;
                     case 8:
-                        tree = tree.map(multiplyByTwo<int>);
+                        tree = tree.map(multiplyByTwo<T>);
                         break;
                     case 9:
-                        tree = tree.where(isEven<int>);
+                        tree = tree.where(isEven<T>);
                         break;
                     case 10: {
-                        BinaryTree<int> tree2;
+                        BinaryTree<T> tree2;
                         int value = 0;
                         cout << "Enter value for tree2 (enter -1 if you end):"<< endl;
                         while (value != -1) {
                             cin >> value;
                             tree2.insert(value);
                         }
-                        BinaryTree<int> mergedTree = tree.merge(tree, tree2);
+                        BinaryTree<T> mergedTree = tree.merge(tree, tree2);
                         cout << "MergedTree:" << endl;
                         mergedTree.show();
                         break;
@@ -112,13 +113,13 @@ int main() {
                         int value;
                         cout << "Enter value to extract subtree: ";
                         cin >> value;
-                        BinaryTree<int> subtree = tree.extractSubtree(value);
+                        BinaryTree<T> subtree = tree.extractSubtree(value);
                         cout << "SubTree:" << endl;
                         subtree.show();
                         break;
                     }
                     case 12: {
-                        BinaryTree<int> subtree;
+                        BinaryTree<T> subtree;
                         int value = 0;
                         cout << "Enter value for subtree (enter -1 if you end):"<< endl;
                         while (value != -1) {
@@ -159,8 +160,9 @@ int main() {
                         cout << "Enter tree as string: ";
                         cin.ignore();
                         getline(cin, treeString);
-                        BinaryTree<int> newTree;
+                        BinaryTree<T> newTree;
                         newTree.fromString(treeString, choice2);
+                        cout << "New tree:" << endl;
                         newTree.show();
                         break;
                     }
@@ -169,7 +171,7 @@ int main() {
                         cout << "Enter path to node: ";
                         cin.ignore();
                         getline(cin, path);
-                        Node<int>* node = tree.findNodeByPath(path);
+                        Node<T>* node = tree.findNodeByPath(path);
                         if (node) {
                             cout << "Node value: " << node->data << endl;
                         } else {
@@ -199,5 +201,10 @@ int main() {
             cout << "Exiting..." << endl;
             break;
     }
+
+}
+
+int main() {
+    menu<int>();
     return 0;
 }
