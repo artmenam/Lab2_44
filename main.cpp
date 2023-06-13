@@ -29,13 +29,13 @@ void showMenu () {
     cout << "Enter your choice: ";
 }
 
-// Функция-пример для map()
+// Функция для map
 template<class T>
 T multiplyByTwo(T value) {
     return value * 2;
 }
 
-// Функция-пример для where()
+// Функция для where
 template<class T>
 bool isEven(T value) {
     return value % 2 == 0;
