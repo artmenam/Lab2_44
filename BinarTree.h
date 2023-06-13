@@ -353,6 +353,58 @@ private:
         delete node;
     }
 
+    int height(Node<T>* node) {
+        if (node == nullptr) {
+            return 0;
+        }
+        return max(height(node->left), height(node->right)) + 1;
+    }
+
+    int balanceFactor(Node<T>* node) {
+        if (node == nullptr) {
+            return 0;
+        }
+        return height(node->left) - height(node->right);
+    }
+
+    Node<T>* rotateLeft(Node<T>* node) {
+        Node<T>* newRoot = node->right;
+        node->right = newRoot->left;
+        newRoot->left = node;
+        return newRoot;
+    }
+
+    Node<T>* rotateRight(Node<T>* node) {
+        Node<T>* newRoot = node->left;
+        node->left = newRoot->right;
+        newRoot->right = node;
+        return newRoot;
+    }
+
+    Node<T>* balance(Node<T>* node) {
+        if (node == nullptr) {
+            return nullptr;
+        }
+
+        int bf = balanceFactor(node);
+
+        if (bf > 1) {
+            if (balanceFactor(node->left) < 0) {
+                node->left = rotateLeft(node->left);
+            }
+            return rotateRight(node);
+        }
+
+        if (bf < -1) {
+            if (balanceFactor(node->right) > 0) {
+                node->right = rotateRight(node->right);
+            }
+            return rotateLeft(node);
+        }
+
+        return node;
+    }
+
 public:
     BinaryTree() {
         root = nullptr;
@@ -485,5 +537,9 @@ public:
     void clear() {
         clearRecursive(root);
         root = nullptr;
+    }
+
+    void balanceTree() {
+        root = balance(root);
     }
 };

@@ -23,6 +23,7 @@ void showMenu () {
     cout << "16. Find node by path" << endl;
     cout << "17. Show tree" << endl;
     cout << "18. Clear tree" << endl;
+    cout << "19. Balance tree" << endl;
     cout << "0. Exit" << endl;
     cout << "Enter your choice: ";
 }
@@ -96,8 +97,15 @@ int main() {
                         break;
                     case 10: {
                         BinaryTree<int> tree2;
-                        // Заполнение второго дерева
+                        int value = 0;
+                        cout << "Enter value for tree2 (enter -1 if you end):"<< endl;
+                        while (value != -1) {
+                            cin >> value;
+                            tree2.insert(value);
+                        }
                         BinaryTree<int> mergedTree = tree.merge(tree, tree2);
+                        cout << "MergedTree:" << endl;
+                        mergedTree.show();
                         break;
                     }
                     case 11: {
@@ -105,11 +113,18 @@ int main() {
                         cout << "Enter value to extract subtree: ";
                         cin >> value;
                         BinaryTree<int> subtree = tree.extractSubtree(value);
+                        cout << "SubTree:" << endl;
+                        subtree.show();
                         break;
                     }
                     case 12: {
-                        // Создание и заполнение поддерева для проверки
                         BinaryTree<int> subtree;
+                        int value = 0;
+                        cout << "Enter value for subtree (enter -1 if you end):"<< endl;
+                        while (value != -1) {
+                            cin >> value;
+                            subtree.insert(value);
+                        }
                         bool contains = tree.containsSubtree(subtree);
                         cout << "Contains subtree: " << (contains ? "Yes" : "No") << endl;
                     }
@@ -167,6 +182,9 @@ int main() {
                         break;
                     case 18:
                         tree.clear();
+                        break;
+                    case 19:
+                        tree.balanceTree();
                         break;
                     case 0:
                         cout << "Exiting..." << endl;
